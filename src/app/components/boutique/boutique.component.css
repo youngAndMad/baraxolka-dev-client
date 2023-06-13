@@ -1,0 +1,7 @@
+div{
+  display: grid;
+  place-items: center;
+}
+a{
+  margin-top: 50%;
+}
