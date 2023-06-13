@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Address } from 'src/app/model/Address';
+import {AndroidService} from "../../../services/android.service";
 
 @Component({
   selector: 'app-akbulak-first-floor',
@@ -21,6 +22,7 @@ export class AkbulakFirstFloorComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
+    private android:AndroidService
   ) {
     this.leftNodes = [
       'left_1',
@@ -115,14 +117,10 @@ export class AkbulakFirstFloorComponent implements OnInit {
 
   }
 
-  clickDiv(element: Element, address: Address) {
-    this.selectedAddress = address;
-    this.openPopup();
+  clickDiv( address: Address) {
+    this.android.sendMessageToAndroid(address.boutique.id!)
   }
 
-  openPopup() {
-    this.isPopupOpen = true;
-  }
 
   closePopup() {
     this.isPopupOpen = false;
